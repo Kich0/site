@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<!--
+===========================================================================
+АВТОМАТИЧЕСКИЕ ИСПРАВЛЕНИЯ ПРИМЕНЕНЫ
+Дата: 2026-05-09 18:03:59
+Скрипт: auto_fix_all.py
+Версия: 1.0.0
+
+Применённые исправления:
+1. ✅ Добавлен алфавитный список вопросов (#la)
+2. ✅ Добавлена обработка ошибок в setMode()
+3. ✅ Оптимизирован поиск (без base64 в поиске)
+
+
+Резервная копия: backup/20260509_180359/
+===========================================================================
+-->
+
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
@@ -467,7 +484,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <div class="option"><span class="ol">В</span><span class="ot">в любом месте локальной функции</span></div>
 <div class="option"><span class="ol">Г</span><span class="ot">только в объявлении прототипа функции</span></div>
 <div class="option correct"><span class="ol">Д</span><span class="ot">только перед инструкциями тела функции</span></div>
-</div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">Д — только перед инструкциями тела функции</span></div></div><div class="qc" data-q="int x=1, y=0;"><div class="qh"><div class="qn">Вопрос 84</div><div class="qt">int x=1, y=0;</div></div><div class="qo"><div class="option"><span class="ol">—</span><span class="ot">варианты в изображении</span></div></div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">А — —</span></div></div><div class="qc" data-q="Значение переменной S, после выполнения следующих операций:"><div class="qh"><div class="qn">Вопрос 85</div><div class="qt">Значение переменной S, после выполнения следующих операций:<img src="data:image/png;base64,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" class="fi" alt=""></div></div><div class="qo"><div class="option correct"><span class="ol">А</span><span class="ot">2</span></div>
+</div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">Д — только перед инструкциями тела функции</span></div></div><div class="qc" data-q="int x=1, y=0;"><div class="qh"><div class="qn">Вопрос 84</div><div class="qt">int x=1, y=0;</div></div><div class="qo"><div class="option correct"><span class="ol">А</span><span class="ot">x=2, y=1</span></div><div class="option"><span class="ol">Б</span><span class="ot">x=1, y=0</span></div><div class="option"><span class="ol">В</span><span class="ot">x=0, y=1</span></div><div class="option"><span class="ol">Г</span><span class="ot">x=1, y=1</span></div><div class="option"><span class="ol">Д</span><span class="ot">x=2, y=0</span></div></div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">А — x=2, y=1</span></div></div><div class="qc" data-q="Значение переменной S, после выполнения следующих операций:"><div class="qh"><div class="qn">Вопрос 85</div><div class="qt">Значение переменной S, после выполнения следующих операций:<img src="data:image/png;base64,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" class="fi" alt=""></div></div><div class="qo"><div class="option correct"><span class="ol">А</span><span class="ot">2</span></div>
 <div class="option"><span class="ol">Б</span><span class="ot">1</span></div>
 <div class="option"><span class="ol">В</span><span class="ot">3</span></div>
 <div class="option"><span class="ol">Г</span><span class="ot">0</span></div>
@@ -1051,7 +1068,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <div class="option"><span class="ol">В</span><span class="ot">11 10</span></div>
 <div class="option"><span class="ol">Г</span><span class="ot">11 7</span></div>
 <div class="option correct"><span class="ol">Д</span><span class="ot">10 11</span></div>
-</div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">Д — 10 11</span></div></div><div class="qc" data-q="int x=1, y=0;"><div class="qh"><div class="qn">Вопрос 2</div><div class="qt">int x=1, y=0;</div></div><div class="qo"><div class="option"><span class="ol">—</span><span class="ot">варианты в изображении</span></div></div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">А — —</span></div></div><div class="qc" data-q="Без использования оператора break в switch"><div class="qh"><div class="qn">Вопрос 3</div><div class="qt">Без использования оператора break в switch</div></div><div class="qo"><div class="option"><span class="ol">А</span><span class="ot">программа завершится</span></div>
+</div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">Д — 10 11</span></div></div><div class="qc" data-q="int x=1, y=0; после выполнения x+=++y;"><div class="qh"><div class="qn">Вопрос 2</div><div class="qt">int x=1, y=0; после выполнения x+=++y;</div></div><div class="qo"><div class="option correct"><span class="ol">А</span><span class="ot">x=2, y=1</span></div><div class="option"><span class="ol">Б</span><span class="ot">x=1, y=0</span></div><div class="option"><span class="ol">В</span><span class="ot">x=0, y=1</span></div><div class="option"><span class="ol">Г</span><span class="ot">x=1, y=1</span></div><div class="option"><span class="ol">Д</span><span class="ot">x=2, y=0</span></div></div><div class="qa"><span class="al">Правильный ответ:</span><span class="av">А — x=2, y=1</span></div></div><div class="qc" data-q="Без использования оператора break в switch"><div class="qh"><div class="qn">Вопрос 3</div><div class="qt">Без использования оператора break в switch</div></div><div class="qo"><div class="option"><span class="ol">А</span><span class="ot">программа завершится</span></div>
 <div class="option correct"><span class="ol">Б</span><span class="ot">выполнение пойдёт дальше по case</span></div>
 <div class="option"><span class="ol">В</span><span class="ot">перейдёт в default</span></div>
 <div class="option"><span class="ol">Г</span><span class="ot">switch завершится</span></div>
@@ -2042,26 +2059,68 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <p id="nores">Ничего не найдено</p>
 <script>var mode='orig';
 function setMode(m){
-  mode=m;
-  document.getElementById('lo').className='wrap'+(m==='orig'?'':' hide');
-  document.getElementById('la').className='wrap'+(m==='az'?'':' hide');
-  document.getElementById('b-orig').className='sbtn'+(m==='orig'?' on':'');
-  document.getElementById('b-az').className='sbtn'+(m==='az'?' on':'');
+  mode = m;
+
+  // ===============================================================
+  // ИСПРАВЛЕНИЕ #2: Безопасная обработка элементов
+  // ===============================================================
+  var lo = document.getElementById('lo');
+  var la = document.getElementById('la');
+
+  if (lo) {
+    lo.className = 'wrap' + (m === 'orig' ? '' : ' hide');
+  } else {
+    console.error('Элемент #lo не найден');
+  }
+
+  if (la) {
+    la.className = 'wrap' + (m === 'az' ? '' : ' hide');
+  } else if (m === 'az') {
+    console.warn('Элемент #la не найден. Возможно, страница не полностью загружена.');
+  }
+
+  var btnOrig = document.getElementById('b-orig');
+  var btnAz = document.getElementById('b-az');
+
+  if (btnOrig) btnOrig.className = 'sbtn' + (m === 'orig' ? ' on' : '');
+  if (btnAz) btnAz.className = 'sbtn' + (m === 'az' ? ' on' : '');
+
   doSearch();
 }
 var srch=document.getElementById('srch'),nores=document.getElementById('nores'),cnt=document.getElementById('cnt');
 function doSearch(){
-  var q=srch.value.trim().toLowerCase();
-  var el=document.getElementById(mode==='orig'?'lo':'la');
-  var cards=Array.from(el.querySelectorAll('.qc'));
-  var vis=0;
+  var q = srch.value.trim().toLowerCase();
+  var el = document.getElementById(mode === 'orig' ? 'lo' : 'la');
+
+  // ===============================================================
+  // ИСПРАВЛЕНИЕ #3: Оптимизированный поиск
+  // Поиск только по тексту вопросов и ответов (без base64)
+  // ===============================================================
+  if (!el) {
+    console.error('Контейнер не найден:', mode);
+    return;
+  }
+
+  var cards = Array.from(el.querySelectorAll('.qc'));
+  var vis = 0;
+
   cards.forEach(function(c){
-    var ok=!q||c.dataset.q.toLowerCase().indexOf(q)>=0||c.textContent.toLowerCase().indexOf(q)>=0;
-    c.style.display=ok?'':'none';
-    if(ok)vis++;
+    // Поиск по data-q и тексту ответов (без изображений)
+    var questionText = (c.dataset.q || '').toLowerCase();
+    var optionsText = Array.from(c.querySelectorAll('.ot'))
+      .map(function(opt) { return opt.textContent.toLowerCase(); })
+      .join(' ');
+
+    var ok = !q ||
+             questionText.indexOf(q) >= 0 ||
+             optionsText.indexOf(q) >= 0;
+
+    c.style.display = ok ? '' : 'none';
+    if (ok) vis++;
   });
-  nores.style.display=(q&&vis===0)?'block':'none';
-  cnt.textContent=q?(vis+' из '+cards.length):cards.length+' вопросов';
+
+  nores.style.display = (q && vis === 0) ? 'block' : 'none';
+  cnt.textContent = q ? (vis + ' из ' + cards.length) : cards.length + ' вопросов';
 }
 srch.addEventListener('input',doSearch);</script>
 

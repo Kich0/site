@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<!--
+===========================================================================
+АВТОМАТИЧЕСКИЕ ИСПРАВЛЕНИЯ ПРИМЕНЕНЫ
+Дата: 2026-05-09 18:03:59
+Скрипт: auto_fix_all.py
+Версия: 1.0.0
+
+Применённые исправления:
+1. ✅ Добавлен алфавитный список вопросов (#la)
+2. ✅ Добавлена обработка ошибок в setMode()
+3. ✅ Оптимизирован поиск (без base64 в поиске)
+
+
+Резервная копия: backup/20260509_180359/
+===========================================================================
+-->
+
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
@@ -2330,26 +2347,68 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <p id="nores">Ничего не найдено</p>
 <script>var mode='orig';
 function setMode(m){
-  mode=m;
-  document.getElementById('lo').className='wrap'+(m==='orig'?'':' hide');
-  document.getElementById('la').className='wrap'+(m==='az'?'':' hide');
-  document.getElementById('b-orig').className='sbtn'+(m==='orig'?' on':'');
-  document.getElementById('b-az').className='sbtn'+(m==='az'?' on':'');
+  mode = m;
+
+  // ===============================================================
+  // ИСПРАВЛЕНИЕ #2: Безопасная обработка элементов
+  // ===============================================================
+  var lo = document.getElementById('lo');
+  var la = document.getElementById('la');
+
+  if (lo) {
+    lo.className = 'wrap' + (m === 'orig' ? '' : ' hide');
+  } else {
+    console.error('Элемент #lo не найден');
+  }
+
+  if (la) {
+    la.className = 'wrap' + (m === 'az' ? '' : ' hide');
+  } else if (m === 'az') {
+    console.warn('Элемент #la не найден. Возможно, страница не полностью загружена.');
+  }
+
+  var btnOrig = document.getElementById('b-orig');
+  var btnAz = document.getElementById('b-az');
+
+  if (btnOrig) btnOrig.className = 'sbtn' + (m === 'orig' ? ' on' : '');
+  if (btnAz) btnAz.className = 'sbtn' + (m === 'az' ? ' on' : '');
+
   doSearch();
 }
 var srch=document.getElementById('srch'),nores=document.getElementById('nores'),cnt=document.getElementById('cnt');
 function doSearch(){
-  var q=srch.value.trim().toLowerCase();
-  var el=document.getElementById(mode==='orig'?'lo':'la');
-  var cards=Array.from(el.querySelectorAll('.qc'));
-  var vis=0;
+  var q = srch.value.trim().toLowerCase();
+  var el = document.getElementById(mode === 'orig' ? 'lo' : 'la');
+
+  // ===============================================================
+  // ИСПРАВЛЕНИЕ #3: Оптимизированный поиск
+  // Поиск только по тексту вопросов и ответов (без base64)
+  // ===============================================================
+  if (!el) {
+    console.error('Контейнер не найден:', mode);
+    return;
+  }
+
+  var cards = Array.from(el.querySelectorAll('.qc'));
+  var vis = 0;
+
   cards.forEach(function(c){
-    var ok=!q||c.dataset.q.toLowerCase().indexOf(q)>=0||c.textContent.toLowerCase().indexOf(q)>=0;
-    c.style.display=ok?'':'none';
-    if(ok)vis++;
+    // Поиск по data-q и тексту ответов (без изображений)
+    var questionText = (c.dataset.q || '').toLowerCase();
+    var optionsText = Array.from(c.querySelectorAll('.ot'))
+      .map(function(opt) { return opt.textContent.toLowerCase(); })
+      .join(' ');
+
+    var ok = !q ||
+             questionText.indexOf(q) >= 0 ||
+             optionsText.indexOf(q) >= 0;
+
+    c.style.display = ok ? '' : 'none';
+    if (ok) vis++;
   });
-  nores.style.display=(q&&vis===0)?'block':'none';
-  cnt.textContent=q?(vis+' из '+cards.length):cards.length+' вопросов';
+
+  nores.style.display = (q && vis === 0) ? 'block' : 'none';
+  cnt.textContent = q ? (vis + ' из ' + cards.length) : cards.length + ' вопросов';
 }
 srch.addEventListener('input',doSearch);</script>
 
