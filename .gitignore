@@ -7,6 +7,9 @@
 # Отслеживать .gitignore
 !.gitignore
 
+# игнорировать CLAUDE.md
+CLAUDE.md
+
 # Игнорировать резервные копии
 backup/
 

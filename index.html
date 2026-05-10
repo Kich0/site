@@ -7,171 +7,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0d0f14;
-      --surface: #161a23;
-      --border: #232840;
-      --accent: #4f7cff;
-      --accent2: #a78bfa;
-      --text: #e8eaf2;
-      --muted: #7b82a0;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Mulish', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Фоновая сетка */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    header {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 860px;
-      padding: 60px 24px 0;
-    }
-
-    .label {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-family: 'Unbounded', sans-serif;
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      background: linear-gradient(135deg, #fff 30%, var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 56px;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 860px;
-      padding: 0 24px 80px;
-    }
-
-    .section-title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .subject-card {
-      display: block;
-      text-decoration: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .subject-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity .3s;
-      border-radius: 16px;
-    }
-
-    .subject-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(79, 124, 255, 0.15);
-    }
-
+    :root { --bg: #0d0f14; --surface: #161a23; --border: #232840; --accent: #4f7cff; --accent2: #a78bfa; --text: #e8eaf2; --muted: #7b82a0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.4; pointer-events: none; z-index: 0; }
+    header { position: relative; z-index: 1; width: 100%; max-width: 860px; padding: 60px 24px 0; }
+    .label { font-family: 'Unbounded', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h1 { font-family: 'Unbounded', sans-serif; font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; background: linear-gradient(135deg, #fff 30%, var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+    main { position: relative; z-index: 1; width: 100%; max-width: 860px; padding: 0 24px 80px; }
+    .semester-block { margin-bottom: 48px; }
+    .semester-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .semester-badge { font-family: 'Unbounded', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: rgba(79,124,255,.1); border: 1px solid rgba(79,124,255,.25); border-radius: 8px; padding: 5px 12px; white-space: nowrap; }
+    .semester-line { flex: 1; height: 1px; background: var(--border); }
+    .subjects { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .subject-card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: border-color .2s, transform .2s, box-shadow .2s; position: relative; overflow: hidden; }
+    .subject-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent) 0%, transparent 60%); opacity: 0; transition: opacity .3s; border-radius: 16px; }
+    .subject-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(79,124,255,.15); }
     .subject-card:hover::before { opacity: 0.06; }
-
-    .card-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .card-title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .card-meta {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .card-arrow {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      font-size: 20px;
-      color: var(--accent);
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: opacity .2s, transform .2s;
-    }
-
-    .subject-card:hover .card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      color: var(--muted);
-      font-size: 12px;
-      padding-bottom: 32px;
-    }
+    .card-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+    .card-title { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .card-meta { font-size: 13px; color: var(--muted); }
+    .card-arrow { position: absolute; top: 24px; right: 24px; font-size: 20px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity .2s, transform .2s; }
+    .subject-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+    footer { position: relative; z-index: 1; color: var(--muted); font-size: 12px; padding-bottom: 32px; }
   </style>
 </head>
 <body>
@@ -182,36 +39,47 @@
   </header>
 
   <main>
-    <p class="section-title">Предметы</p>
-    <div class="subjects">
 
-      <a href="physicss67.html" class="subject-card">
-        <span class="card-icon">⚛️</span>
-        <div class="card-title">Физика</div>
-        <div class="card-meta">Вопросы и ответы</div>
-        <span class="card-arrow">→</span>
-      </a>
-      <a href="ikt.html" class="subject-card">
-        <span class="card-icon">💻</span>
-        <div class="card-title">Икт</div>
-        <div class="card-meta">Вопросы и ответы</div>
-        <span class="card-arrow">→</span>
-      </a>
+    <div class="semester-block">
+      <div class="semester-header">
+        <span class="semester-badge">1 курс · 2 семестр</span>
+        <div class="semester-line"></div>
+      </div>
+      <div class="subjects">
+
+        <a href="physicss67.html" class="subject-card">
+          <span class="card-icon">⚛️</span>
+          <div class="card-title">Физика</div>
+          <div class="card-meta">Вопросы и ответы</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="ikt.html" class="subject-card">
+          <span class="card-icon">💻</span>
+          <div class="card-title">ИКТ</div>
+          <div class="card-meta">Вопросы и ответы</div>
+          <span class="card-arrow">→</span>
+        </a>
+
         <a href="ofg.html" class="subject-card">
-        <span class="card-icon">💰</span>
-        <div class="card-title">Офг</div>
-        <div class="card-meta">Вопросы и ответы</div>
-        <span class="card-arrow">→</span>
-      </a>
-        <a href="tp.html" class="subject-card">
-        <span class="card-icon">🦾</span>
-        <div class="card-title">Технология программирования</div>
-        <div class="card-meta">Вопросы и ответы</div>
-        <span class="card-arrow">→</span>
-      </a>
-      <!-- Сюда можно добавить другие предметы -->
+          <span class="card-icon">💰</span>
+          <div class="card-title">ОФГ</div>
+          <div class="card-meta">Вопросы и ответы</div>
+          <span class="card-arrow">→</span>
+        </a>
 
+        <a href="tp.html" class="subject-card">
+          <span class="card-icon">🦾</span>
+          <div class="card-title">Технология программирования</div>
+          <div class="card-meta">Вопросы и ответы</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+      </div>
     </div>
+
+    <!-- Сюда можно добавить другие семестры -->
+
   </main>
 
   <footer>....</footer>
