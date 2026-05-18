@@ -6,6 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <script>(function(){try{document.documentElement.setAttribute('data-plt-theme',localStorage.getItem('pltTheme')||'light')}catch(e){document.documentElement.setAttribute('data-plt-theme','light')}}());</script>
   <title>Учебник</title>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -28,7 +29,44 @@ main{width:100%;max-width:1040px;padding:0 20px 80px}
 .card-arrow{position:absolute;top:18px;right:18px;font-size:18px;color:var(--muted);transition:color .16s}
 .subject-card:hover .card-arrow{color:var(--text)}
 footer{color:#5f5a54;font-size:12px;padding-bottom:32px}
-@media(max-width:720px){header{padding:38px 18px 0}main{padding:0 18px 56px}h1{font-size:clamp(2.3rem,13vw,4rem)}.semester-header{gap:12px}.subjects{grid-template-columns:1fr}.subject-card{min-height:144px}}</style>
+/* PLATONUS THEME */
+:root{--plt-bg:#e7e5e1;--plt-panel:#f4f3f1;--plt-sidebar:#384044;--plt-red:#e4003f;--plt-blue:#5a6f88;--plt-link:#0077c8;--plt-border:#d8d5cf;--plt-text:#263241;--plt-muted:#7f858b}
+body{display:block;background:var(--plt-bg);color:var(--plt-text);font-family:Arial,'Mulish',sans-serif;min-height:100vh;padding-left:76px}
+body::before{content:"";position:fixed;left:0;top:0;bottom:0;width:76px;background:var(--plt-sidebar);z-index:20}
+body::after{content:"";position:fixed;left:76px;top:0;right:0;height:76px;background:#f5f4f2;box-shadow:0 1px 0 rgba(0,0,0,.04);z-index:40}
+header{max-width:none;width:auto;padding:118px 32px 0 32px;position:relative;z-index:45}
+header::before{content:"P";position:fixed;left:14px;top:18px;width:48px;height:52px;background:var(--plt-red);color:#fff;text-align:center;font:700 28px/52px Arial,sans-serif;z-index:60;overflow:hidden}
+header::after{content:"▦  Карта сайта    KZ | RU | EN   ☁   ✉  ●   🔔  ●   ●   ●";position:fixed;right:28px;top:18px;height:42px;display:flex;align-items:center;color:#5a6f88;font:400 16px Arial,sans-serif;z-index:55}
+.label{color:#6d7f91;font:400 15px Arial,sans-serif;letter-spacing:0;margin:0 0 24px}
+.label::before{content:"PLATONUS";position:fixed;left:0;top:76px;width:76px;text-align:center;color:#fff;font:700 9px/1 Arial,sans-serif;z-index:60}
+.label::after{content:"  ›  Карта сайта";margin-left:18px;font-weight:700}
+h1{max-width:none;color:var(--plt-blue);font-family:Arial,'Mulish',sans-serif;font-size:28px;font-weight:700;line-height:1.25;margin:0 0 24px;text-transform:none}
+main{max-width:none;width:auto;padding:0 32px 80px;position:relative;z-index:2}
+.semester-block{margin:0;background:var(--plt-panel);border:1px solid #e0ded9;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,.08);padding:24px 28px}
+.semester-header{margin:0 0 22px;gap:18px}
+.semester-badge{font-family:Arial,sans-serif;font-size:17px;font-weight:700;color:var(--plt-blue);letter-spacing:0;text-transform:none}
+.semester-line{background:#ddd9d3}
+.subjects{grid-template-columns:repeat(4,minmax(180px,1fr));gap:26px}
+.subject-card{min-height:158px;background:transparent;border:0;border-radius:6px;padding:12px 10px;color:var(--plt-link);box-shadow:none}
+.subject-card:hover{background:#eeecea;border-color:transparent;transform:none}
+.card-icon{width:auto;height:auto;display:inline-block;background:transparent;border:0;color:#555;font-size:26px;margin:0 12px 14px 0;vertical-align:middle}
+.card-title{display:inline-block;color:var(--plt-blue);font-family:Arial,sans-serif;font-size:20px;font-weight:700;line-height:1.25;margin:0 0 12px;vertical-align:middle}
+.card-meta{display:block;color:var(--plt-link);font-size:16px;line-height:1.7;margin-left:38px}
+.card-arrow{display:none}
+footer{position:fixed;left:76px;right:0;bottom:0;background:#dedbd6;color:#6d7f91;text-align:center;padding:8px 0;font-size:12px;z-index:35}
+.theme-toggle{position:fixed;right:390px;top:18px;height:42px;z-index:70;padding:0 15px;border:1px solid var(--plt-border);border-radius:5px;background:var(--plt-panel);color:var(--plt-blue);font:700 13px Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.08);cursor:pointer}
+.theme-toggle:hover{border-color:#c4beb5;background:#eeece8}
+html[data-plt-theme="dark"]{--plt-bg:#202326;--plt-panel:#2a2e32;--plt-sidebar:#242a2e;--plt-blue:#c4d0dd;--plt-link:#71b8ef;--plt-border:#3c4248;--plt-text:#eef2f5;--plt-muted:#9ca8b3;color-scheme:dark}
+html[data-plt-theme="dark"] body::after{background:#262a2e;box-shadow:0 1px 0 rgba(255,255,255,.05)}
+html[data-plt-theme="dark"] header::after{color:#c4d0dd}
+html[data-plt-theme="dark"] .label{color:#9ca8b3}
+html[data-plt-theme="dark"] .label::after{color:#b5c3d0}
+html[data-plt-theme="dark"] .semester-block{background:var(--plt-panel);border-color:#3c4248;box-shadow:0 3px 12px rgba(0,0,0,.22)}
+html[data-plt-theme="dark"] .semester-line{background:#3c4248}
+html[data-plt-theme="dark"] .subject-card:hover{background:#30353a}
+html[data-plt-theme="dark"] footer{background:#262a2e;color:#9ca8b3}
+html[data-plt-theme="dark"] .theme-toggle{background:#30353a;border-color:#47505a;color:#eef2f5}
+@media(max-width:900px){body{padding-left:0}body::before,body::after,header::before,header::after{display:none}header{padding:28px 16px 0}main{padding:0 16px 56px}.subjects{grid-template-columns:1fr}.semester-block{padding:18px}.card-meta{margin-left:0}}</style>
 </head>
 <body>
 
@@ -83,5 +121,30 @@ footer{color:#5f5a54;font-size:12px;padding-bottom:32px}
 
   <footer>....</footer>
 
+<script>
+(function(){
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-plt-theme',theme);
+    try{localStorage.setItem('pltTheme',theme)}catch(e){}
+    document.querySelectorAll('.theme-toggle').forEach(function(btn){
+      btn.textContent=theme==='dark'?'Light':'Dark';
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    if(!document.querySelector('.theme-toggle')){
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='theme-toggle';
+      document.body.appendChild(btn);
+    }
+    applyTheme(document.documentElement.getAttribute('data-plt-theme')||'light');
+    document.querySelectorAll('.theme-toggle').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        applyTheme((document.documentElement.getAttribute('data-plt-theme')||'light')==='dark'?'light':'dark');
+      });
+    });
+  });
+}());
+</script>
 </body>
 </html>

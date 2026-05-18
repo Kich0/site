@@ -23,6 +23,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
+<script>(function(){try{document.documentElement.setAttribute('data-plt-theme',localStorage.getItem('pltTheme')||'light')}catch(e){document.documentElement.setAttribute('data-plt-theme','light')}}());</script>
 <title>Физика</title>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -60,7 +61,55 @@ body{background:var(--bg);color:var(--tx);font-family:'Mulish',sans-serif;min-he
 .av{color:#9be2b4;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
 .fi{max-width:100%;height:auto;max-height:200px;vertical-align:middle;margin:4px 3px;border-radius:6px;background:#fff;padding:6px}
 #nores{display:none;text-align:center;padding:60px 0;color:var(--mu);font-size:15px;position:relative;z-index:1;max-width:1040px;margin:0 auto}
-@media(max-width:720px){.bar{padding:10px 14px;gap:10px}.back{width:100%;justify-content:center}.bcnt{margin-left:0}.sbtns{width:100%;display:grid;grid-template-columns:1fr 1fr}.test-btn{width:100%;margin-left:0}.sw,.wrap{padding:0 14px}.qh,.qo,.qa{padding-left:14px;padding-right:14px}.qt{font-size:15px}.option{font-size:13.5px}}</style>
+/* PLATONUS THEME */
+:root{--plt-bg:#e7e5e1;--plt-panel:#f4f3f1;--plt-sidebar:#384044;--plt-red:#e4003f;--plt-blue:#5a6f88;--plt-link:#0077c8;--plt-border:#d8d5cf;--plt-text:#263241;--plt-muted:#7f858b}
+body{background:var(--plt-bg);color:var(--plt-text);font-family:Arial,'Mulish',sans-serif;padding-left:76px}
+body::before{content:"";position:fixed;left:0;top:0;bottom:0;width:76px;background:var(--plt-sidebar);z-index:20}
+.bar{position:fixed;left:76px;top:0;right:0;height:76px;z-index:45;background:#f5f4f2;border:0;box-shadow:0 1px 0 rgba(0,0,0,.04);padding:0 24px;gap:12px}
+.bar::before{content:"P";position:fixed;left:14px;top:18px;width:48px;height:52px;background:var(--plt-red);color:#fff;text-align:center;font:700 28px/52px Arial,sans-serif;z-index:60;overflow:hidden}
+.bar .back::before{content:"PLATONUS";position:fixed;left:0;top:76px;width:76px;text-align:center;color:#fff;font:700 9px/1 Arial,sans-serif;z-index:60}
+.bar::after{content:"KZ | RU | EN   ☁   ✉  ●   🔔  ●   ●   ●";margin-left:10px;color:#5a6f88;font-size:15px}
+.back{height:42px;padding:0 18px;background:var(--plt-red);border-color:var(--plt-red);border-radius:5px;color:#fff;font-size:15px;box-shadow:0 3px 8px rgba(228,0,63,.25)}
+.back:hover{background:#c90037;border-color:#c90037;color:#fff}
+.btitle{font-family:Arial,sans-serif;color:var(--plt-blue);font-size:18px;font-weight:700}
+.bcnt{color:#6d7f91;font-size:14px}
+.sbtn,.test-btn{height:38px;border-radius:4px;border:1px solid var(--plt-red);background:transparent;color:var(--plt-red);font:400 14px Arial,sans-serif;letter-spacing:0}
+.sbtn.on,.test-btn{background:var(--plt-red);border-color:var(--plt-red);color:#fff;box-shadow:0 3px 8px rgba(228,0,63,.22)}
+.sbtn:hover,.test-btn:hover{background:#c90037;border-color:#c90037;color:#fff}
+.sw{max-width:none;margin:112px 24px 0 24px;padding:0;z-index:1}
+.si{left:18px;color:#6d7f91}
+#srch{height:48px;background:var(--plt-panel);border:1px solid var(--plt-border);border-radius:7px;color:var(--plt-text);box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:15px}
+#srch:focus{border-color:#bfc8d2}
+.wrap{max-width:none;margin:18px 24px 90px 24px;padding:0;gap:14px}
+.qc{background:var(--plt-panel);border:1px solid #e0ded9;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.qc:hover{background:var(--plt-panel);border-color:#d2cec6}
+.qh{background:transparent;border-bottom:1px solid var(--plt-border);padding:18px 22px 16px}
+.qn{font-family:Arial,sans-serif;color:var(--plt-blue);font-size:13px;font-weight:700;letter-spacing:0;text-transform:none}
+.qt{font-size:16px;color:var(--plt-text);line-height:1.65;font-weight:600}
+.qo{padding:16px 22px;gap:9px;border-bottom:1px solid var(--plt-border)}
+.option{background:#eeece8;border:1px solid #d8d5cf;border-radius:6px;color:#233043;font-size:15px;line-height:1.55}
+.option:not(.correct):hover{background:#e7e4df;border-color:#c9c4bb}
+.option.correct{background:#d9f0e4;border-color:#7bc59b;color:#1f6a43}
+.ol{background:#fff;border:1px solid #d0ccc5;color:#5f6f80;border-radius:4px}
+.option.correct .ol{background:#31b66b;border-color:#31b66b;color:#fff}
+.qa{background:#edf8f2;padding:12px 22px}
+.al{font-family:Arial,sans-serif;color:#6d7f91;letter-spacing:0}
+.av{color:#16884c}
+#nores{max-width:none;color:#6d7f91}
+.theme-toggle{height:38px;padding:0 14px;border-radius:5px;border:1px solid var(--plt-border);background:var(--plt-panel);color:var(--plt-blue);font:700 13px Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.08);cursor:pointer}
+.theme-toggle:hover{border-color:#c4beb5;background:#eeece8}
+html[data-plt-theme="dark"]{--plt-bg:#202326;--plt-panel:#2a2e32;--plt-sidebar:#242a2e;--plt-blue:#c4d0dd;--plt-link:#71b8ef;--plt-border:#3c4248;--plt-text:#eef2f5;--plt-muted:#9ca8b3;color-scheme:dark}
+html[data-plt-theme="dark"] .bar,html[data-plt-theme="dark"] .tov-bar{background:#262a2e;border-color:#3c4248;box-shadow:0 1px 0 rgba(255,255,255,.05)}
+html[data-plt-theme="dark"] .bar::after{color:#c4d0dd}
+html[data-plt-theme="dark"] #srch,html[data-plt-theme="dark"] .qc,html[data-plt-theme="dark"] .tov-qcard{background:var(--plt-panel);border-color:#3c4248;box-shadow:0 3px 12px rgba(0,0,0,.22)}
+html[data-plt-theme="dark"] .option,html[data-plt-theme="dark"] .tov-opt{background:#24282c;border-color:#3c4248;color:#eef2f5}
+html[data-plt-theme="dark"] .option:not(.correct):hover,html[data-plt-theme="dark"] .tov-opt:hover:not(.answered){background:#30353a;border-color:#47505a}
+html[data-plt-theme="dark"] .qh,html[data-plt-theme="dark"] .qo,html[data-plt-theme="dark"] .tov-qhead{border-color:#3c4248}
+html[data-plt-theme="dark"] .qa{background:#20342b}
+html[data-plt-theme="dark"] #test-overlay{background:#202326;color:#eef2f5}
+html[data-plt-theme="dark"] .tov-close,html[data-plt-theme="dark"] .tov-nav-btn,html[data-plt-theme="dark"] .tov-restart{background:#30353a;border-color:#47505a;color:#eef2f5}
+html[data-plt-theme="dark"] .theme-toggle{background:#30353a;border-color:#47505a;color:#eef2f5}
+@media(max-width:900px){body{padding-left:0}body::before,.bar::before,.bar::after{display:none}.bar{position:sticky;left:0;height:auto;padding:12px 14px}.back{width:auto}.sw,.wrap{margin-left:14px;margin-right:14px}.sbtns{width:100%;display:grid;grid-template-columns:1fr 1fr}.test-btn{width:100%}}</style>
 </head>
 <body>
 <nav class="bar">
@@ -2162,6 +2211,29 @@ srch.addEventListener('input',doSearch);</script>
 .tov-restart.outline{background:#111;border-color:#252525;color:#f4f1ea}
 .tov-img{max-width:100%;max-height:200px;display:block;margin:8px 0;border-radius:6px;background:#fff;padding:6px}
 @media(max-width:720px){.tov-bar{padding:12px 14px}.tov-body{padding:0 14px;margin-top:32px}.tov-qhead,.tov-options{padding-left:14px;padding-right:14px}.tov-qtext{font-size:15px}.tov-opt{font-size:13.5px}}</style>
+<style>
+#test-overlay{background:#e7e5e1;color:#263241;font-family:Arial,'Mulish',sans-serif}
+.tov-bar{background:#f5f4f2;border-bottom:1px solid #ddd9d3;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.tov-close,.tov-nav-btn,.tov-restart{border-radius:5px;border:1px solid #d8d5cf;background:#f4f3f1;color:#5a6f88;font-family:Arial,sans-serif}
+.tov-close:hover,.tov-nav-btn:hover:not(:disabled),.tov-restart.outline:hover{border-color:#c4beb5;background:#eeece8;color:#263241}
+.tov-title{font-family:Arial,sans-serif;color:#5a6f88;font-size:17px}
+.tov-counter{color:#6d7f91}.tov-score{color:#16884c}
+.tov-progress{height:3px;background:#ddd9d3}.tov-progress-bar{background:#e4003f}
+.tov-body{max-width:none;margin:112px 24px 40px;padding:0}
+.tov-qcard{background:#f4f3f1;border:1px solid #e0ded9;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.tov-qhead{border-bottom:1px solid #d8d5cf}.tov-qnum{font-family:Arial,sans-serif;color:#5a6f88;letter-spacing:0}.tov-qtext{color:#263241;font-size:16px}
+.tov-opt{background:#eeece8;border:1px solid #d8d5cf;color:#233043;border-radius:6px;font-size:15px}
+.tov-opt:hover:not(.answered){background:#e7e4df;border-color:#c9c4bb}
+.tov-ol{background:#fff;border-color:#d0ccc5;color:#5f6f80}
+.tov-opt.selected-wrong{background:#fae3e6;border-color:#e4003f;color:#9b1230}
+.tov-opt.revealed-correct,.tov-opt.correct-chosen{background:#d9f0e4;border-color:#7bc59b;color:#1f6a43}
+.tov-feedback.correct{color:#16884c}.tov-feedback.wrong{color:#c90037}
+.tov-nav-btn.primary,.tov-restart{background:#e4003f;border-color:#e4003f;color:#fff;box-shadow:0 3px 8px rgba(228,0,63,.22)}
+.tov-nav button[onclick^="jumpQ"]{background:#f4f3f1!important;border-color:#d8d5cf!important;color:#5a6f88!important}
+.tov-nav button[style*="#a78bfa"]{background:#e4003f!important;border-color:#e4003f!important;color:#fff!important}
+.tov-results-score{font-family:Arial,sans-serif;color:#5a6f88}.tov-results-pct{color:#263241}.tov-results-label,.tov-results-msg{color:#6d7f91}
+@media(max-width:900px){.tov-body{margin:28px 14px 40px}.tov-bar{padding:12px 14px}}
+</style>
 <div id="test-overlay">
   <div class="tov-bar">
     <button class="tov-close" onclick="closeTest()">← Назад к списку</button>
@@ -2370,5 +2442,31 @@ srch.addEventListener('input',doSearch);</script>
 })();
 </script>
 
+<script>
+(function(){
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-plt-theme',theme);
+    try{localStorage.setItem('pltTheme',theme)}catch(e){}
+    document.querySelectorAll('.theme-toggle').forEach(function(btn){
+      btn.textContent=theme==='dark'?'Light':'Dark';
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var bar=document.querySelector('.bar')||document.body;
+    if(!document.querySelector('.theme-toggle')){
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='theme-toggle';
+      bar.appendChild(btn);
+    }
+    applyTheme(document.documentElement.getAttribute('data-plt-theme')||'light');
+    document.querySelectorAll('.theme-toggle').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        applyTheme((document.documentElement.getAttribute('data-plt-theme')||'light')==='dark'?'light':'dark');
+      });
+    });
+  });
+}());
+</script>
 </body>
 </html>
